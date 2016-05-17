@@ -1,0 +1,8 @@
+Hey, <%= User.find_by(id: @ticket.user_id)[:first_name] %>!
+
+There is one ticket for you!
+
+Here is details:
+
+<%= render @ticket -%>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ticketing system</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class='<%= controller.controller_name %>'>
+
+  <div style="width: 1270px;height: 100px;background-color:white ;color: #c10037;text-align: -webkit-center;margin: 8px;">
+
+
+        <img style="margin-left:-70%" src="/assets/UNM_logo2.png"/>
+
+  <h1 style="margin-left: 10%;margin-top:-5%;font-size: -webkit-xxx-large;"><i>Office of Institutional Analytics</i></h1>
+  </div>
+
+  <hr style="margin-left: 5%;margin-right: 5%;border-color: #BDBDBD;">
+  <div style="width: 1270px;height: ;background-color: ;margin: 8px;">
+
+      <div style="margin-left:5%; float:left; width:8%;height:30px;background-color: #c10037;border-color: #c10037;text-align: center;padding: 5px;border-radius: 5px;"><%= link_to "New Ticket", new_ticket_path, style:'color:white;background-color: #c10037;font-family: sans-serif;' %></div>
+
+        <% if session[:user_id] %>
+            <div style="float:left; margin-left:2%; width:8%;height:30px;background-color: #c10037;border-color: #c10037;text-align: center;padding: 5px;border-radius: 5px;"><%= link_to "Users", users_path, style:'color:white;background-color: #c10037;font-family: sans-serif;' %></div>
+            <div style="float:left; margin-left:2%; width:8%;height:30px;background-color: #c10037;border-color: #c10037;text-align: center;padding: 5px;border-radius: 5px;"><%= link_to "Tickets", tickets_path, style:'color:white;background-color: #c10037;font-family: sans-serif;' %></div>
+            <div style="float:left; margin-left:55%; width:8%;height:30px;background-color: #c10037;border-color: #c10037;text-align: center;padding: 5px;border-radius: 5px;"><%= link_to "Logout", logout_path, method: :delete, style:'color:white;background-color: #c10037;font-family: sans-serif;' %></div>
+          <% else %>
+            <div style="float:left; margin-left:75%; width:8%;height:30px;background-color: #c10037;border-color: #c10037;text-align: center;padding: 5px;border-radius: 5px;"><%= link_to "Admin", login_path, style:'color:white;background-color: #c10037;font-family: sans-serif;' %></div>
+  	    <% end %>
+  </div>
+
+<!--
+    <div id="main-container" class="container">
+      <div class="row">
+	    <div class="col-sm-1">
+              <div class="row">
+                <h2>Menu</h2>
+              </div>
+              <ul class="list-unstyled">
+            <li><p><%= link_to "New ticket", new_ticket_path %></p></li>
+            <% if session[:user_id] %>
+              <li><p><%= link_to "Users", users_path %></p></li>
+              <li><p><%= link_to "Tickets", tickets_path %></p></li>
+              <li><p><%= link_to "Logout", logout_path, method: :delete %></p></li>
+            <% else %>
+              <li><p><%= link_to "Login", login_path %></p></li>
+            <% end %>
+                <!--<li><a href='https://www.facebook.com/sharer/sharer.php?u=URL'>Share on Facebook</a></li>-->
+              </ul>
+	    </div>
+        <div class="col-sm-11">
+        <%= yield %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

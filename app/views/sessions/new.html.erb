@@ -1,0 +1,39 @@
+<div style="width:80%;height:80%;background-color: #E7E7E7;border-radius: 8px;margin:15%;margin-top: 2%;">
+
+
+  <%= form_tag(html: {class: 'form-horizontal'}) do %>
+    <fieldset>
+
+      <div>
+          <h1 style="color: #c10037;text-align: center;padding-top: 2%;font-family: sans-serif;"> Please Login </h1>
+      </div>
+      <hr style="margin-left: 5%;margin-right: 5%;border-color: white;">
+
+      <div class="row">
+        <div class="form-group bg-info col-xs-4 col-md-offset-2">
+          <% if flash[:alert] %>
+            <%= flash[:alert] %>
+          <% end %>
+        </div>
+      </div>
+
+      <div style="margin:2%; margin-left:5%;">
+        <%= label_tag :name, 'Name:' %>
+        <div >
+          <%= text_field_tag :name, params[:name], style:'border-radius:5px;width:300px;height:35px;background-color:white;' %>
+        </div>
+      </div>
+
+      <div style="margin:2%; margin-left:5%;">
+        <%= label_tag :password, 'Password:' %>
+        <div>
+          <%= password_field_tag :password, params[:password], style:'border-radius:5px;width:300px;height:35px;background-color:white;' %>
+        </div>
+      </div>
+
+      <div style="margin-left:5%;margin-bottom:2%;" >
+        <%= submit_tag 'Login', style:"background-color: #c10037;border-color: #c10037;border-radius:4px;color:white;width:8%;padding:5px;" %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

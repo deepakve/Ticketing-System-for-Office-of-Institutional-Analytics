@@ -1,0 +1,99 @@
+    <%= form_for(@user, html: {class: 'form-horizontal'}) do |f| %>
+      <% if @user.errors.any? %>
+        <div class="row">
+          <div class="col col-sm-2"></div>
+          <div class="input-group col-sm-7">
+            <div id="" class="form-group bg-warning">
+              <ul>
+                <dt><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</dt>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+        <div style="width:80%;height:80%;background-color: #E7E7E7;border-radius: 8px;margin: 15%;margin-top: 2%;">
+            <fieldset>
+              <legend style="margin-left:6%">Enter user details</legend>
+
+              <div class="row1">
+                  <div class="field form-group" style="margin-right:57%;margin-left:6%;">
+                    <%= f.label :first_name, 'First Name' %>
+                    <div >
+                      <%= f.text_field :first_name, class: 'form-control',placeholder: 'First Name' %>
+                    </div>
+                  </div>
+
+
+                  <div style="margin-top:-5em; margin-left:56%; margin-right: 2%;">
+                    <%= f.label :last_name, 'Last Name' %>
+                    <div >
+                      <%= f.text_field :last_name, class: 'form-control',placeholder: 'Last Name' %>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="row2" style="margin-top:2%;">
+                  <div class="field form-group" style="margin-right:57%;margin-left:6%;">
+                    <%= f.label :name, 'User Name' %>
+                    <div>
+                      <%= f.text_field :name, size: 32, class: 'form-control',placeholder: 'User name'%>
+                    </div>
+                  </div>
+
+
+                  <div style="margin-top:-5em; margin-left:56%; margin-right: 2%;">
+                    <%= f.label :email %>
+                    <div>
+                      <%= f.text_field :email, class: 'form-control',placeholder: 'Email' %>
+                    </div>
+                  </div>
+
+              </div>
+
+
+              <div class="row3" style="margin-top:2%;">
+                <div class="field form-group" style="margin-right:57%;margin-left:6%;">
+                  <%= f.label :password %>
+                  <div >
+                    <%= f.password_field :password, size: 32, class: 'form-control',placeholder: 'Password' %>
+                  </div>
+                </div>
+
+
+                <div style="margin-top:-5em; margin-left:56%; margin-right: 2%;">
+                  <%= f.label :password_confirmation %>
+                  <div>
+                    <%= f.password_field :password_confirmation, size: 32, class: 'form-control',placeholder: 'Password' %>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row4" style="margin-top:2%;">
+                <div class="field form-group" style="margin-right:57%;margin-left:6%;">
+                  <%= f.label :admin %>
+                  <div >
+                    <%= f.select :admin, [false, true], class: 'form-control' %>
+                  </div>
+                </div>
+
+
+                <div style="margin-top:-5em; margin-left:56%; margin-right: 2%;">
+                  <%= f.label :role %>
+                  <div >
+                    <%= f.select :role,['Admin','Data Steward','OIA Programmer'], :include_blank=> true,class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row" style="margin-right:57%;margin-left:6%;margin-bottom:2%;margin-top:2%;">
+                <%= f.submit class: 'btn btn-success', style:"background-color: #c10037;border-color: #c10037;" %>
+              </div>
+
+            </fieldset>
+        </div>
+    <% end %>

@@ -1,0 +1,184 @@
+<%= form_for(@ticket, html: {class: 'form-horizontal'}) do |f| %>
+  <% if @ticket.errors.any? %>
+    <div class="row">
+      <div class="input-group col-sm-7 col-md-offset-2">
+        <div id="" class="form-group bg-warning">
+          <ul>
+            <dt><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</dt>
+            <% @ticket.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+    <div style="width:80%;height:80%;background-color: #E7E7E7;border-radius: 8px;margin: 15%;margin-top: 2%;">
+          <div>
+              <h1 style="color: #c10037;text-align: center;padding-top: 2%;font-family: sans-serif;"> OIA Data Request Form </h1>
+          </div>
+          <hr style="margin-left: 5%;margin-right: 5%;border-color: white;">
+
+
+       <div class="allrows" style="padding-left: 8%;padding-right: 8%;">
+          <div>
+                      <% if session[:user_id] %>
+                        <div class="form-group">
+                          <%= f.label  :user_id, 'Assign to', class: 'col-sm-2 control-label', style:'margin-left:-27px;' %><br>
+                          <div style="width: 300px;margin-left: 14px;margin-top: 12px;" >
+                            <%= f.collection_select :user_id, User.all, :id, :name_with_role, :include_blank => true, class: 'form-control' %>
+                          </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                        <!--  <%= f.label  :status, class: 'col-sm-2 control-label' %>-->
+                        <!--  <div class="input-group col-sm-7">-->
+                        <!--    <%= f.select :status, ['Assigned', 'To be Assigned', 'Completed'], class: 'form-control' %>-->
+                        <!--  </div>-->
+                        <!--</div>-->
+                      <% end %>
+          </div>
+
+                  <div class="row1" style="margin-top:2%;">
+                      <div class="field form-group" style="margin-right:57%;margin-left:0%;">
+                        <%= f.label :first_name, 'First Name' %>
+                        <div>
+                          <%= f.text_field :first_name, class: 'form-control', placeholder: 'Your name' %>
+                        </div>
+                      </div>
+                      <div style="margin-top:-5em; margin-left:56%; margin-right: 1%;">
+                        <%= f.label :last_name, 'Last Name' %>
+                        <div >
+                          <%= f.text_field :last_name, class: 'form-control' %>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="row2" style="margin-top:2%;">
+                    <div class="form-group" style="margin-right:57%;margin-left:0%;">
+                        <%= f.label :job_title, 'Job Title' %>
+                        <div>
+                          <%= f.text_field :job_title, class: 'form-control' %>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:-75px; margin-left:56%; margin-right: 1%;">
+                        <%= f.label :department %>
+                        <div>
+                          <%= f.text_field :department, class: 'form-control' %>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row3" style="margin-top:2%;">
+                    <div class="form-group"  style="margin-right:57%;margin-left:0%;">
+                        <%= f.label :phone_number, 'Phone Number' %>
+                        <div>
+                          <%= f.text_field :phone_number, class: 'form-control' %>
+                        </div>
+                    </div>
+                    <div style="margin-top:-75px; margin-left:56%; margin-right: 1%;">
+                        <%= f.label :email %>
+                        <div>
+                          <%= f.text_field :email, class: 'form-control' %>
+                        </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row4" style="margin-top:2%;">
+                      <div class="form-group" style="margin-right:57%;margin-left:0%;">
+                          <%= f.label :date_needed_by, 'Date Needed By' %><br>
+                          <div>
+                            <%= f.date_select :date_needed_by %>
+                            <!--<label for="ticket_date_needed_by" class="input-group-addon glyphicon glyphicon-calendar"></label>-->
+                          </div>
+                      </div>
+
+                      <div class="form-group" style="margin-top:-143px; margin-left:56%;">
+                          <%= f.label :priority, 'Priority' %>
+                          <div style="margin-right:8%;">
+                            <%= f.select :priority, ['1 - High', '2 - Standard', '3 - Low', '4 - Special'], :include_blank => true, class: 'form-control' %>
+                          </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top:-6px; margin-left:56%;margin-right:1%;" >
+                          <%= f.label :position %>
+                          <div >
+                            <%= f.select :position, ['Faculty', 'Staff', 'Student', 'Other'], :include_blank => true, class: 'form-control' %>
+                          </div>
+                        </div>
+
+                  </div>
+
+                  <div class="row5"  style="margin-top:2%;">
+                      <div class="form-group" style="margin-right:57%;margin-left:0%;">
+                          <%= f.label :type_of_request %>
+                          <div >
+                            <%= f.select :type_of_request, ['Internal regular reporting and analsis of official data', 'Internal ad-hoc reporting and analsis of official data', 'External regular reporting of official data','External ad-hoc reporting of official data','Other'], :include_blank => true, class: 'form-control' %>
+                          </div>
+                        </div>
+                        <div class="form-group" style="margin-top:-75px; margin-left:56%; margin-right: 1%;">
+                          <%= f.label :purpose  %><br>
+                          <div >
+                            <%= f.text_field :purpose, class: 'form-control' %>
+                          </div>
+                       </div>
+                  </div>
+
+                  <div class="row6" style="margin-top:2%;">
+                      <div class="form-group" style="margin-right:57%;margin-left:0%;">
+                          <%= f.label :student_type%>
+                          <div>
+                            <%= f.select :student_type, ['All student', 'Undergraduate', 'Freshman', 'Full-time'], :include_blank => true, class: 'form-control' %>
+                          </div>
+                        </div>
+                        <div class="form-group" style="margin-top:-75px; margin-left:56%; margin-right: 1%;">
+                          <%= f.label :campus %>
+                          <div>
+                            <%= f.select :campus, ['Main Campus', 'Gallup', 'Taos', 'Valencia','Los Almos'], :include_blank => true, class: 'form-control' %>
+                          </div>
+                        </div>
+                  </div>
+
+                  <div class="row7" style="margin-top:2%;">
+                    <div class="form-group" style="margin-right:57%;margin-left:0%;">
+                       <%= f.label :time_period%>
+                       <div>
+                         <%= f.text_field :time_period, class: 'form-control' %>
+                       </div>
+                     </div>
+                     <div class="form-group" style="margin-top:-75px; margin-left:56%; margin-right: 1%;">
+                         <%= f.label :irb %>
+                         <div>
+                           <%= f.text_field :irb, class: 'form-control' %>
+                         </div>
+                       </div>
+                  </div>
+
+                  <div class="row8" style="margin-top:2%;">
+                      <div class="form-group" style="margin-right:57%;margin-left:0%;">
+                          <%= f.label :grant_pi, 'Grant PI' %>
+                          <div>
+                            <%= f.text_field :grant_pi, class: 'form-control' %>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="row9" style="margin-top:2%;">
+                      <div class="form-group" class="form-group" style="margin-right:1%;margin-left:0%;">
+                          <%= f.label :description %>
+                          <div>
+                            <%= f.text_area :description, class: 'form-control', rows: 5 %>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row" style="margin-right:57%;margin-left:0%;margin-bottom:2%;">
+                        <%= f.submit class: 'btn btn-success', style:"background-color: #c10037;border-color: #c10037;" %>
+                  </div>
+
+       </div>
+    </div>
+<% end %>

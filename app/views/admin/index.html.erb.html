@@ -1,0 +1,12 @@
+<h1>Admin#index</h1>
+<div class="row">
+  <div class="col">
+    It's <%= Time.now %>
+    <p>
+      There will be the list of all of the tickets (Like Ticket.count, than @tickets.each do |ticket|)
+    </p>
+    <p>
+      But we still can put here users count: <%= pluralize(@total_users, "user") %>.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+
+<div style="width: 100%;background-color: #E7E7E7;margin-left: 5%;padding: 1%;border-radius: 8px;">
+<h1>Ticket Dashboard</h1>
+
+<table class="table table-hover" style="margin-left: 0%;background-color:#BDBDBD;border: white;" rules="all";>
+  <caption>Tickets count: <%= @tickets.count %></caption>
+  <thead style="background-color: #c10037;color: white;">
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Purpose</th>
+      <th>Date needed by</th>
+      <th>Priority</th>
+      <th>Type of request</th>
+      <th>Campus</th>
+      <th>Responsible</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.first_name + " " + ticket.last_name %></td>
+        <td><%= ticket.job_title + " from " + ticket.department %></td>
+        <td><%= ticket.purpose %></td>
+        <td><%= ticket.date_needed_by %></td>
+        <td><%= ticket.priority %></td>
+        <td><%= ticket.type_of_request %></td>
+        <td><%= ticket.campus %></td>
+          <% if User.find_by(id: ticket[:user_id]) %>
+            <td><p><%= User.find_by(id: ticket[:user_id])[:first_name] %></p>
+              <% if ticket.status == 'Assigned' %>
+                <p><%= link_to 'Complete', ticket_path(ticket, "ticket[status]" => 'Completed'), method: :put, data: {confirm: 'Sure?'} %></p>
+              <% end %>
+            </td>
+          <% else %>
+            <td><%= link_to 'Nobody', edit_ticket_path(ticket) %></td>
+          <% end %>
+          <td><%= ticket.status %></td>
+        <td><%= link_to 'Assign', edit_ticket_path(ticket) %></td>
+        <td><%= link_to 'Delete', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+<br>
+
+
+
+<div style="margin-left:5%; float:left; width:8%;height:30px;background-color: #c10037;border-color: #c10037;text-align: center;padding: 5px;border-radius: 5px;"><%= link_to "New Ticket", new_ticket_path, style:'color:white;background-color: #c10037;font-family: sans-serif;' %></div>

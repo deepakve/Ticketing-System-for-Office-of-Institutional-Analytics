@@ -1,0 +1,1 @@
+json.extract! @ticket, :id, :first_name, :last_name, :job_title, :department, :phone_number, :date_needed_by, :email, :priority, :position, :type_of_request, :purrpose, :description, :time_period, :student_type, :campus, :irb, :grant_pi, :created_at, :updated_at

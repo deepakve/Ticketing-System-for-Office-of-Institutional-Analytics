@@ -1,0 +1,62 @@
+<dl style="margin-left: 5%;">
+  <dt><b>First name:</b></dt>
+  <dd><%= @ticket.first_name %></dd>
+  
+  <dt><b>Last name:</b></dt>
+  <dd><%= @ticket.last_name %></dd>
+
+  <dt><b>Job title:</b></dt>
+  <dd><%= @ticket.job_title %></dd>
+
+  <dt><b>Department:</b></dt>
+  <dd><%= @ticket.department %></dd>
+
+  <dt><b>Phone number:</b></dt>
+  <dd><%= @ticket.phone_number %></dd>
+
+  <dt><b>Date needed by:</b></dt>
+  <dd><%= @ticket.date_needed_by %></dd>
+
+  <dt><b>Email:</b></dt>
+  <dd><%= mail_to(@ticket.email) %></dd>
+
+  <dt><b>Priority:</b></dt>
+  <dd><%= @ticket.priority %></dd>
+
+  <dt><b>Position:</b></dt>
+  <dd><%= @ticket.position %></dd>
+
+  <dt><b>Type of request:</b></dt>
+  <dd><%= @ticket.type_of_request %></dd>
+
+  <dt><b>Purpose:</b></dt>
+  <dd><%= @ticket.purpose %></dd>
+
+  <dt><b>Description:</b></dt>
+  <dd><%= @ticket.description %></dd>
+
+  <dt><b>Time period:</b></dt>
+  <dd><%= @ticket.time_period %></dd>
+
+  <dt><b>Student type:</b></dt>
+  <dd><%= @ticket.student_type %></dd>
+
+  <dt><b>Campus:</b></dt>
+  <dd><%= @ticket.campus %></dd>
+  
+  <dt><b>Irb:</b></dt>
+  <dd><%= @ticket.irb %></dd>
+
+  <dt><b>Grant PI:</b></dt>
+  <dd><%= @ticket.grant_pi %></dd>
+
+  <% if User.find_by(id: @ticket[:user_id]) %>
+    <dt><b>Responsible</b></dt>
+    <dd><%= User.find_by(id: @ticket[:user_id])[:name] %></dd>
+<% # else %>
+    <!--<dd>Nobody is responsible</dd> 
+    -->
+  <% end %>
+  <dt><b>Status</b></dt>
+  <dd><%= @ticket[:status] %>
+</dl>

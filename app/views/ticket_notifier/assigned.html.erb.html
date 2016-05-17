@@ -1,0 +1,11 @@
+<h1>New ticket assigned to you!</h1>
+
+<p>
+  Hey, <%= User.find_by(id: @ticket.user_id)[:first_name] %>!
+</p>
+
+<p>There is one ticket for you!</p>
+
+<p>Here is details:</p>
+
+<%= render @ticket -%>
