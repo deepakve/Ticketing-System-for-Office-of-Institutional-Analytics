@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  job_title: MyString
+  department: MyString
+  phone_number: MyString
+  date_needed_by: 2015-11-19
+  email: MyString
+  priority: MyString
+  position: MyString
+  type_of_request: MyString
+  purpose: MyString
+  description: MyText
+  time_period: MyString
+  student_type: MyString
+  campus: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  job_title: MyString
+  department: MyString
+  phone_number: MyString
+  date_needed_by: 2015-11-19
+  email: MyString
+  priority: MyString
+  position: MyString
+  type_of_request: MyString
+  purpose: MyString
+  description: MyText
+  time_period: MyString
+  student_type: MyString
+  campus: MyString
